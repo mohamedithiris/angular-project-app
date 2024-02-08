@@ -39,7 +39,7 @@ pipeline {
         stage('Upload to S3') {
             steps {
                 // Use the AWS CLI path to execute AWS commands
-                sh "${env.AWS_CLI}/aws s3 sync dist/bundle-app s3://angular-project-app"
+                sh "${env.AWS_CLI}/aws s3 sync dist/angular-project s3://angular-project-app"
             }
             post {
                 success {
