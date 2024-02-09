@@ -5,8 +5,9 @@ pipeline {
         AWS_CLI = "${env.AWS_CLI}"
     }
 
-    tools {
-        nodejs 'nodejs' // Assuming 'nodejs' matches the name of the Node.js installation defined in Jenkins Global Tool Configuration
+        // Assuming 'nodejs' matches the name of the Node.js installation defined in Jenkins Global Tool Configuration
+        tools {
+        nodejs 'nodejs'
     }
 
     stages {
@@ -39,12 +40,12 @@ pipeline {
         stage('Upload to S3') {
             steps {
                 // Use the AWS CLI path to execute AWS commands
-                sh "${env.AWS_CLI}/aws s3 sync dist/angular-project s3://angular-project-app"
+                sh "${env.AWS_CLI}/aws s3 sync dist/angular-project s3://sage-one-app"
             }
             post {
                 success {
                     // Echo the static website URL
-                    echo 'Static website URL: http://angular-project-app.s3-website-us-east-1.amazonaws.com'
+                    echo 'Static website URL: http://sage-one-app.s3-website-us-east-1.amazonaws.com'
                 }
             }
         }
