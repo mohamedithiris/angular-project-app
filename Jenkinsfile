@@ -40,12 +40,12 @@ pipeline {
         stage('Upload to S3') {
             steps {
                 // Use the AWS CLI path to execute AWS commands
-                sh "${env.AWS_CLI}/aws s3 sync dist/angular-project s3://sage-one-app"
+                sh "${env.AWS_CLI}/aws s3 sync dist/angular-project s3://angular-app-dev-2"
             }
             post {
                 success {
                     // Echo the static website URL
-                    echo 'Static website URL: http://sage-one-app.s3-website-us-east-1.amazonaws.com'
+                    echo 'Static website URL: http://angular-app-dev-2.s3-website-us-east-1.amazonaws.com'
                 }
             }
         }
